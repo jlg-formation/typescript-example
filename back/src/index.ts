@@ -1,2 +1,4 @@
-const name = 'Jean-Louis';
-console.log(`Bonjour ${name}`);
+import {WebServer} from './WebServer';
+
+const server = new WebServer();
+server.start();

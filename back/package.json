@@ -11,14 +11,21 @@
     "fix": "gts fix",
     "prepare": "npm.cmd run compile",
     "pretest": "npm.cmd run compile",
-    "posttest": "npm.cmd run lint"
+    "posttest": "npm.cmd run lint",
+    "start": "node build/src/index.js",
+    "start:dev": "ts-node src/index.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/express": "^4.17.12",
     "@types/node": "^14.11.2",
     "gts": "^3.1.0",
+    "ts-node": "^10.0.0",
     "typescript": "^4.0.3"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }
