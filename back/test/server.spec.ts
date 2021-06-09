@@ -22,4 +22,27 @@ describe('Web Server', () => {
       assert.fail(error);
     }
   });
+
+  it('test start on same port (error)', async function () {
+    this.timeout(4000);
+
+    try {
+      const server2 = new WebServer();
+      await server2.start();
+    } catch (error) {
+      // console.log('tout est sous controle: ', error);
+      assert.ok(error);
+    }
+  });
+
+  it('test stop without started', async function () {
+    this.timeout(4000);
+
+    try {
+      const server2 = new WebServer();
+      await server2.stop();
+    } catch (error) {
+      assert.fail(error);
+    }
+  });
 });

@@ -4,7 +4,7 @@ import {Server} from 'http';
 
 export class WebServer {
   app!: express.Express;
-  server!: Server;
+  server: Server | undefined;
   port = 3000;
   constructor() {
     const app = express();
@@ -30,6 +30,10 @@ export class WebServer {
   }
   stop(): Promise<void> {
     return new Promise<void>((resolve, reject) => {
+      if (!this.server) {
+        resolve();
+        return;
+      }
       this.server.close(err => (err ? reject() : resolve()));
     });
   }
