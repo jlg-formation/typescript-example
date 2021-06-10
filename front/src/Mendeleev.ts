@@ -1,25 +1,47 @@
+import { ChemicalElt } from "./interfaces/ChemicalElt";
 import * as d3 from "d3";
 
+const eltCard = {
+  width: 3 + 0.5,
+  height: 4 + 0.5,
+};
+
 export class Mendeleev {
-  data: d3.DSVRowArray<string> | undefined;
-  constructor(private div: Element) {
-    console.log("instantiating Mendeleev");
-  }
+  data: ChemicalElt[] | undefined;
+  constructor(private div: Element) {}
 
   async init() {
-    this.data = await d3.csv("assets/data.csv");
-    console.log("this.data: ", this.data);
+    const data = await d3.csv<ChemicalElt, string>(
+      "assets/data.csv",
+      (d) => d as unknown as ChemicalElt
+    );
+    this.data = data.filter((d) => d.Period && d.Group);
   }
 
   refresh() {
     if (!this.data) {
       throw new Error("no data loaded.");
     }
-    console.log("start to refresh");
-    d3.select(this.div).html(`
-    <div class="element">
-      <span>H</span>
-    </div>
-    `);
+    const assoc = d3
+      .select(this.div)
+      .html("")
+      .selectAll("div.element")
+      .data(this.data);
+    assoc
+      .enter()
+      .append("div")
+      .attr("class", "element")
+      .attr("style", (d) => {
+        console.log("d: ", d);
+
+        const x = (+d.Group - 1) * eltCard.width;
+        const y = (+d.Period - 1) * eltCard.height;
+        return `transform: translate(${x}em, ${y}em)`;
+      })
+      .html(
+        (d) => `
+<span>${d.Symbol}</span>
+      `
+      );
   }
 }
