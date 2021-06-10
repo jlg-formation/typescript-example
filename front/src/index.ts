@@ -2,6 +2,9 @@ import "./style.scss";
 
 import { Mendeleev } from "./Mendeleev";
 
-const div = document.querySelector("div.tableau");
-const m = new Mendeleev(div);
-m.refresh();
+(async () => {
+  const div = document.querySelector("div.tableau");
+  const m = new Mendeleev(div);
+  await m.init();
+  m.refresh();
+})();
