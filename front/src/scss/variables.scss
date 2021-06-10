@@ -1,0 +1,7 @@
+@mixin neumorphism($radius: 50px, $offset: 20px, $blur: 60px) {
+  border: 0.01em solid #ddd;
+  border-radius: $radius;
+  background: #fff;
+  box-shadow: $offset $offset $blur #ccc, -$offset -$offset $blur #fff;
+  color: #999;
+}

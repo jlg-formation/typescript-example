@@ -7,6 +7,10 @@ export class Mendeleev {
 
   refresh() {
     console.log("start to refresh");
-    d3.select(this.div).text("Mendeleev via D3");
+    d3.select(this.div).html(`
+    <div class="element">
+      <span>H</span>
+    </div>
+    `);
   }
 }
