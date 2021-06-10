@@ -17,21 +17,25 @@ const readdir = (dir: string) => {
 };
 
 describe('Asynchronous', () => {
-  it('test promises code', done => {
+  it('test promises code', function (done) {
+    this.timeout(4000);
+
     let file: string;
     let file2: string;
+    let c1: string;
 
     readdir(dir)
       .then(files => {
         file = resolve(dir, files[0]);
-        return promises.readFile(file);
+        return promises.readFile(file, {encoding: 'utf8'});
       })
-      .then(c1 => {
+      .then(content => {
+        c1 = content;
         file2 = file + '.copy.txt';
         return promises.writeFile(file2, c1);
       })
       .then(() => {
-        return promises.readFile(file2);
+        return promises.readFile(file2, {encoding: 'utf-8'});
       })
       .then(c2 => {
         assert.deepStrictEqual(c1, c2);
