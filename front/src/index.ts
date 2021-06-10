@@ -1,2 +1,5 @@
-const firstname: string = "Jean-Louis";
-console.log(`hello ${firstname}`);
+import { Mendeleev } from "./Mendeleev";
+
+const div = document.querySelector("div.tableau");
+const m = new Mendeleev(div);
+m.refresh();
