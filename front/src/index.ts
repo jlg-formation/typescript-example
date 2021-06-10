@@ -1,3 +1,5 @@
+import "./style.scss";
+
 import { Mendeleev } from "./Mendeleev";
 
 const div = document.querySelector("div.tableau");
