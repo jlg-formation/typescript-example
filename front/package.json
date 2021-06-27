@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:w": "webpack -w",
     "build": "webpack",
-    "start": "webpack serve --open"
+    "start": "webpack serve --open",
+    "doc": "typedoc src/Mendeleev.ts",
+    "doc:clean": "rimraf docs"
   },
   "keywords": [],
   "author": "",
@@ -17,10 +19,12 @@
     "copy-webpack-plugin": "^9.0.0",
     "css-loader": "^5.2.6",
     "html-webpack-plugin": "^5.3.1",
+    "rimraf": "^2.7.1",
     "sass": "^1.34.1",
     "sass-loader": "^12.0.0",
     "style-loader": "^2.0.0",
     "ts-loader": "^9.2.3",
+    "typedoc": "^0.21.2",
     "typescript": "^4.3.2",
     "webpack": "^5.38.1",
     "webpack-cli": "^4.7.2",
