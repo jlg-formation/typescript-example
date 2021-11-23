@@ -19,7 +19,7 @@ describe('Web Server', () => {
       const test = response.body.startsWith('<!DOCTYPE html>');
       assert.deepStrictEqual(test, true);
     } catch (error) {
-      assert.fail(error);
+      assert.fail(error as Error);
     }
   });
 
@@ -42,7 +42,7 @@ describe('Web Server', () => {
       const server2 = new WebServer();
       await server2.stop();
     } catch (error) {
-      assert.fail(error);
+      assert.fail(error as Error);
     }
   });
 });
