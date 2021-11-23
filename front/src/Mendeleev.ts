@@ -7,7 +7,7 @@ const eltCard = {
   height: 4 + 0.5,
 };
 
-@Logging
+@Logging({ prefix: "My prefix" })
 export class Mendeleev {
   data: ChemicalElt[] | undefined;
 
